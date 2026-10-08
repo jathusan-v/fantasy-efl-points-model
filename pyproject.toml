@@ -1,13 +1,18 @@
 [project]
 name = "fantasy-efl-points-model"
 version = "0.1.0"
-description = "Add your description here"
+description = "Walk-forward expected-points model for Fantasy EFL using Poisson component models"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
     { name = "Jathusan Vijayakumar", email = "jathusan.vk@gmail.com" }
 ]
 requires-python = ">=3.13"
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/jathusan-v/fantasy-efl-points-model"
 
 [build-system]
 requires = ["uv_build>=0.12.24,<0.13.0"]
