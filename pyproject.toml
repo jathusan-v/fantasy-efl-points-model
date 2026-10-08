@@ -29,3 +29,36 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.16.10",
 ]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E", "W",   # pycodestyle: basic style errors
+    "F",        # pyflakes: unused imports, undefined names (real bugs)
+    "I",        # isort: import ordering
+    "B",        # bugbear: likely bugs, e.g. mutable default arguments
+    "UP",       # pyupgrade: modern syntax for your Python version
+    "N",        # pep8-naming: snake_case / PascalCase conventions
+    "D",        # pydocstyle: docstrings on every public function
+    "SIM",      # simplifications
+    "C4",       # cleaner comprehensions
+    "PT",       # pytest style
+    "NPY",      # NumPy: e.g. legacy np.random.seed instead of Generator
+    "A",        # shadowing builtins/stdlib (would have caught calendar.py)
+    "DTZ",      # timezone-naive datetimes
+    "RUF",      # ruff-specific checks
+]
+ignore = [
+    "W191", "D206", "D300",   # conflict with the formatter (per ruff docs)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D1"]   # tests need clear names, not docstrings
+
+[tool.ruff.format]
+docstring-code-format = true
