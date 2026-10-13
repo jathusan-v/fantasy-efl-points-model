@@ -1,0 +1,43 @@
+# Runs on every `git commit`; CI runs the same hooks on every push.
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=200"]
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: block-data-files
+        name: block third-party data files
+        language: fail
+        entry: "Data files must not be committed (see README: Data policy)"
+        files: '\.(sqlite3?|db|parquet|feather|pkl|pickle|gz|zip|csv|json|xlsx?)$'
+        exclude: '^(tests/fixtures|predictions)/'
+
+      - id: ruff-check
+        name: ruff check
+        language: unsupported
+        entry: uv run ruff check --fix
+        types_or: [python, pyi]
+        require_serial: true
+
+      - id: ruff-format
+        name: ruff format
+        language: unsupported
+        entry: uv run ruff format
+        types_or: [python, pyi]
+        require_serial: true
+
+      - id: mypy
+        name: mypy
+        language: unsupported
+        entry: uv run mypy
+        types: [python]
+        pass_filenames: false
