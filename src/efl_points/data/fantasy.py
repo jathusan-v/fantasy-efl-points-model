@@ -56,7 +56,7 @@ def load_player_results(live_scores_dir: Path) -> pd.DataFrame:
     FileNotFoundError
         If the directory contains no ``.json.gz`` files.
     ValueError
-        If a (player_id, game_id) pair appears more than once.
+        If a (``player_id``, ``game_id``) pair appears more than once.
     """
     paths = sorted(live_scores_dir.glob("*.json.gz"))
     if not paths:
@@ -96,7 +96,7 @@ def load_fixtures(rounds_path: Path) -> pd.DataFrame:
     Raises
     ------
     ValueError
-        If a game_id appears more than once or a fixture has no kickoff time.
+        If a ``game_id`` appears more than once or a fixture has no kickoff time.
     """
     records = [
         {
