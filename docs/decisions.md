@@ -19,3 +19,8 @@
 3. Target fixtures are chosen using fixture status from a snapshot taken after `as_of`. Status selects which fixtures to predict; it is never a model input.
 **Why.** Rules based only on timestamps and outcomes, fixed before results are known, leave no room for selecting after seeing results.
 **Consequence.** GW10's Thursday 15 October fixture is excluded (hash committed on 16 October).
+
+## 2026-10-16: Historical match data
+
+**Decision.** Historical player and match statistics come from FotMob.
+**Policy.** Collected at a limited request rate; raw responses are stored privately and never committed, published or redistributed.
