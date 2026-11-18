@@ -11,7 +11,9 @@ repos:
       - id: check-yaml
       - id: detect-private-key
       - id: end-of-file-fixer
+        exclude: '^predictions/'
       - id: trailing-whitespace
+        exclude: '^predictions/'
 
   - repo: local
     hooks:
